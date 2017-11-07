@@ -15,16 +15,10 @@
  */
 package com.alibaba.dubbo.config.spring;
 
-import com.alibaba.dubbo.config.ApplicationConfig;
-import com.alibaba.dubbo.config.ConsumerConfig;
-import com.alibaba.dubbo.config.ModuleConfig;
-import com.alibaba.dubbo.config.MonitorConfig;
-import com.alibaba.dubbo.config.ReferenceConfig;
-import com.alibaba.dubbo.config.RegistryConfig;
+import com.alibaba.dubbo.config.*;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory;
 import com.alibaba.dubbo.config.support.Parameter;
-
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.FactoryBean;
@@ -111,6 +105,27 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 }
             }
         }
+
+        if (getHystrixConfig() == null
+                && (getConsumer() == null || getConsumer().getHystrixConfig() == null)) {
+            Map<String, HystrixConfig> hystrixConfigMap = applicationContext == null ? null : BeanFactoryUtils.beansOfTypeIncludingAncestors(applicationContext, HystrixConfig.class, false, false);
+            if (hystrixConfigMap != null && hystrixConfigMap.size() > 0) {
+                HystrixConfig hystrixConfig = null;
+                for (HystrixConfig config : hystrixConfigMap.values()) {
+                    if (config.isDefault() == null || config.isDefault().booleanValue()) {
+                        if (hystrixConfig != null) {
+                            throw new IllegalStateException("Duplicate application configs: " + hystrixConfig + " and " + config);
+                        }
+                        hystrixConfig = config;
+                    }
+                }
+                if (hystrixConfig != null) {
+                    setHystrixConfig(hystrixConfig);
+                }
+            }
+        }
+
+
         if (getModule() == null
                 && (getConsumer() == null || getConsumer().getModule() == null)) {
             Map<String, ModuleConfig> moduleConfigMap = applicationContext == null ? null : BeanFactoryUtils.beansOfTypeIncludingAncestors(applicationContext, ModuleConfig.class, false, false);

@@ -594,6 +594,31 @@
         </xsd:attribute>
     </xsd:complexType>
 
+
+    <xsd:complexType name="hystrixType">
+        <xsd:attribute name="coreSize" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ Hystrix thread core size. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="sleepMill" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ Sleep time then go-ahead. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="errorThresholdPercentage" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ Error threshold percentage then open hystrix. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="requestVolumeThreshold" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ Request volume threshold then open hystrix. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+
     <xsd:complexType name="methodType">
         <xsd:complexContent>
             <xsd:extension base="abstractMethodType">
@@ -1186,5 +1211,13 @@
             <xsd:documentation><![CDATA[ The service url parameter ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
+
+
+    <xsd:element name="hystrix" type="hystrixType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The service url parameter ]]></xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
 
 </xsd:schema>

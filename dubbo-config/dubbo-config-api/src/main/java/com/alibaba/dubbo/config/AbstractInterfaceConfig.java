@@ -88,6 +88,9 @@ public abstract class AbstractInterfaceConfig extends AbstractMethodConfig {
 
     // 注册中心
     protected List<RegistryConfig> registries;
+
+    protected HystrixConfig hystrixConfig;
+
     // 连接事件
     protected String onconnect;
     // 断开事件
@@ -352,6 +355,14 @@ public abstract class AbstractInterfaceConfig extends AbstractMethodConfig {
 
     public String getStub() {
         return stub;
+    }
+
+    public HystrixConfig getHystrixConfig() {
+        return hystrixConfig;
+    }
+
+    public void setHystrixConfig(HystrixConfig hystrixConfig) {
+        this.hystrixConfig = hystrixConfig;
     }
 
     public void setStub(Boolean stub) {

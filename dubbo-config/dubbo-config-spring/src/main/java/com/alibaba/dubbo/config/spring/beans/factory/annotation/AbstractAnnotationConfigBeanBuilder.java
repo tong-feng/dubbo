@@ -84,6 +84,8 @@ abstract class AbstractAnnotationConfigBeanBuilder<A extends Annotation, B exten
         configureRegistryConfigs(bean);
 
         configureMonitorConfig(bean);
+        
+        configureHystrixConfig(bean);
 
         configureApplicationConfig(bean);
 
@@ -113,6 +115,17 @@ abstract class AbstractAnnotationConfigBeanBuilder<A extends Annotation, B exten
         MonitorConfig monitorConfig = getOptionalBean(applicationContext, monitorBeanName, MonitorConfig.class);
 
         bean.setMonitor(monitorConfig);
+
+    }
+
+
+    private void configureHystrixConfig(B bean) {
+
+        String monitorBeanName = resolveMonitorConfigBeanName(annotation);
+
+        HystrixConfig hystrixConfig = getOptionalBean(applicationContext, monitorBeanName, HystrixConfig.class);
+
+        bean.setHystrixConfig(hystrixConfig);
 
     }
 

@@ -299,6 +299,7 @@ public class ReferenceConfig<T> extends AbstractReferenceConfig {
         }
         map.put(Constants.INTERFACE_KEY, interfaceName);
         appendParameters(map, application);
+        appendParameters(map, hystrixConfig);
         appendParameters(map, module);
         appendParameters(map, consumer, Constants.DEFAULT_KEY);
         appendParameters(map, this);

@@ -599,5 +599,20 @@ public class Constants {
     /*
      * private Constants(){ }
      */
+    public static final String CORE_SIZE_KEY = "coreSize";
+
+    public static final int CORE_SIZE = 30;
+    // 熔断器中断请求5秒后会进入半打开状态,放部分流量过去重试
+    public static final String SLEEP_MILLISECONDS_KEY = "sleepMill";
+
+    public static final int SLEEP_MILLISECONDS = 5000;
+    // 错误率达到50开启熔断保护
+    public static final String ERROR_THRESHOLD_PERCENTAGE_KEY = "errorThresholdPercentage";
+
+    public static final int ERROR_THRESHOLD_PERCENTAGE = 50;
+    // 10秒钟内至少19此请求失败，熔断器才发挥起作用
+    public static final String REQUEST_VOLUME_THRESHOLD_KEY = "requestVolumeThreshold";
+
+    public static final int REQUEST_VOLUME_THRESHOLD = 20;
 
 }
