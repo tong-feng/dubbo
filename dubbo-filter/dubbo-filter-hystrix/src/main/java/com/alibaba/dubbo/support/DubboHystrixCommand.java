@@ -57,4 +57,9 @@ public class DubboHystrixCommand extends HystrixCommand<Result> {
     protected Result run() throws Exception {
         return invoker.invoke(invocation);
     }
+
+    @Override
+    protected Result getFallback() {
+        return null;
+    }
 }

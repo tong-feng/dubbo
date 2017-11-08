@@ -490,6 +490,21 @@
         </plugins>
     </build>
 
+
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Releases</name>
+            <url>http://188.188.22.221:9011/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshots</name>
+            <url>http://188.188.22.221:9011/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <issueManagement>
         <system>github</system>
         <url>https://github.com/alibaba/dubbo/issues</url>
