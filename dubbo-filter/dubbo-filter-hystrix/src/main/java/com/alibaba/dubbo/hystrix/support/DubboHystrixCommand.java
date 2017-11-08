@@ -8,7 +8,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名             修改时间            版本号                  描述
  */
-package com.alibaba.dubbo.support;
+package com.alibaba.dubbo.hystrix.support;
 
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.URL;

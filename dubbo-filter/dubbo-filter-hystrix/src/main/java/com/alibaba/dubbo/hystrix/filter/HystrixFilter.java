@@ -8,12 +8,12 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名             修改时间            版本号                  描述
  */
-package com.alibaba.dubbo.hystrix;
+package com.alibaba.dubbo.hystrix.filter;
 
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.extension.Activate;
 import com.alibaba.dubbo.rpc.*;
-import com.alibaba.dubbo.support.DubboHystrixCommand;
+import com.alibaba.dubbo.hystrix.support.DubboHystrixCommand;
 
 /**
  * 〈一句话功能简述〉<br>
