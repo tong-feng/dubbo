@@ -596,6 +596,11 @@
 
 
     <xsd:complexType name="hystrixType">
+        <xsd:attribute name="invocation" type="xsd:boolean" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ Hystrix invocation. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="coreSize" type="xsd:int" use="required">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[ Hystrix thread core size. ]]></xsd:documentation>

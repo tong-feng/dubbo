@@ -12,8 +12,8 @@ package com.alibaba.dubbo.hystrix.filter;
 
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.extension.Activate;
-import com.alibaba.dubbo.rpc.*;
 import com.alibaba.dubbo.hystrix.support.DubboHystrixCommand;
+import com.alibaba.dubbo.rpc.*;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -25,10 +25,15 @@ import com.alibaba.dubbo.hystrix.support.DubboHystrixCommand;
  */
 @Activate(group = Constants.CONSUMER)
 public class HystrixFilter implements Filter {
-    
+
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        DubboHystrixCommand command = new DubboHystrixCommand(invoker, invocation);
-        return command.execute();
+        boolean invocationStatus = invoker.getUrl().getParameter(Constants.INVOCATION_KEY, Constants.INVOCATION);
+        if (invocationStatus) {
+            DubboHystrixCommand command = new DubboHystrixCommand(invoker, invocation);
+            return command.execute();
+        } else {
+            return invoker.invoke(invocation);
+        }
     }
 }

@@ -14,6 +14,8 @@ public class HystrixConfig extends AbstractConfig {
     private Integer errorThresholdPercentage;
     private Integer requestVolumeThreshold;
 
+    private Boolean invocation;
+
     // 自定义参数
     private Map<String, String> parameters;
     // 是否为缺省
@@ -62,6 +64,14 @@ public class HystrixConfig extends AbstractConfig {
     public void setParameters(Map<String, String> parameters) {
         checkParameterName(parameters);
         this.parameters = parameters;
+    }
+
+    public Boolean getInvocation() {
+        return invocation;
+    }
+
+    public void setInvocation(Boolean invocation) {
+        this.invocation = invocation;
     }
 
     public Boolean isDefault() {

@@ -615,4 +615,8 @@ public class Constants {
 
     public static final int REQUEST_VOLUME_THRESHOLD = 20;
 
+    public static final String INVOCATION_KEY = "invocation";
+
+    public static final boolean INVOCATION = false;
+
 }
